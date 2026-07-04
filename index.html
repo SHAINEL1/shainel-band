@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ====== OPEN GRAPH / SOCIAL MEDIA PREVIEW ====== -->
+    <title>سكربت هواوي - اختيار التردد الأمثل تلقائياً</title>
+
+    <meta property="og:title" content="سكربت هواوي - اختيار التردد الأمثل تلقائياً" />
+    <meta property="og:description" content="سكربت احترافي لراوترات هواوي 4G/5G، يقوم بمسح الترددات وتحليل الإشارة واختيار الأفضل تلقائياً." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shainel-band.netlify.app/" />
+    <meta property="og:image" content="https://i.ibb.co/C526smmY/Jul-4-2026-07-48-37-PM-1.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="سكربت هواوي - شعار SHAINEL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="سكربت هواوي - اختيار التردد الأمثل تلقائياً" />
+    <meta name="twitter:description" content="سكربت احترافي لراوترات هواوي 4G/5G" />
+    <meta name="twitter:image" content="https://i.ibb.co/C526smmY/Jul-4-2026-07-48-37-PM-1.png" />
+
+    <!-- ====== تحميل مكتبة jQuery (ضرورية) ====== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- ====== أكواد الإعلانات ====== -->
+    <!-- 1. Monetag Direct Link (لزر نسخ السكربت) -->
+    <script>
+        window.triggerMonetagOnclick = function() {
+            if (sessionStorage.getItem('monetag_click_triggered') === 'true') {
+                console.log("⚠️ إعلان Monetag ظهر مسبقاً في هذه التحميلة");
+                return;
+            }
+            try {
+                window.open('https://omg10.com/4/11239187', '_blank');
+                sessionStorage.setItem('monetag_click_triggered', 'true');
+                console.log("✅ تم فتح إعلان Monetag");
+            } catch (e) {
+                console.error("❌ خطأ في تشغيل Monetag:", e);
+            }
+        };
+    </script>
+
+    <!-- 2. Adsterra Popunder (لزر Auto Select Best Band) -->
+    <script>
+        window.triggerAdsterra = function() {
+            if (sessionStorage.getItem('adsterra_auto_triggered') === 'true') {
+                console.log("⚠️ إعلان Adsterra ظهر مسبقاً في هذه التحميلة");
+                return;
+            }
+            try {
+                var script = document.createElement('script');
+                script.src = "https://pl30206214.effectivecpmnetwork.com/d4/fc/e8/d4fce8059900325eea73d34a991c4011.js";
+                document.head.appendChild(script);
+                sessionStorage.setItem('adsterra_auto_triggered', 'true');
+                console.log("✅ تم تشغيل إعلان Adsterra");
+            } catch (e) {
+                console.error("❌ خطأ في تشغيل Adsterra:", e);
+            }
+        };
+    </script>
+
+    <!-- ====== الأنماط (CSS) ====== -->
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:#0f172a; font-family:'Segoe UI',Tahoma,sans-serif; padding:40px 20px; color:#e2e8f0; line-height:1.7; }
+        .container { max-width:1000px; margin:0 auto; background:#1e293b; border-radius:28px; padding:40px 45px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8); border:1px solid #334155; }
+        .shainel-header { color: #facc15; font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; text-align: center; }
+        h1 { font-size:2.6rem; font-weight:700; background:linear-gradient(135deg,#38bdf8,#818cf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-align:center; margin-bottom:8px; }
+        .subtitle { text-align:center; color:#94a3b8; font-size:1.1rem; border-bottom:1px solid #334155; padding-bottom:24px; margin-bottom:30px; }
+        .badge { display:inline-block; background:#0ea5e9; color:#0f172a; font-weight:700; font-size:0.8rem; padding:4px 16px; border-radius:50px; letter-spacing:0.3px; margin-top:6px; }
+        .signature { display:inline-block; background:linear-gradient(135deg,#facc15,#f59e0b); color:#0f172a; font-weight:800; padding:2px 14px; border-radius:30px; letter-spacing:1px; font-size:0.9rem; margin:0 6px; }
+        h2 { font-size:1.7rem; font-weight:600; color:#f1f5f9; margin-top:40px; margin-bottom:16px; border-right:5px solid #0ea5e9; padding-right:16px; }
+        p, li { color:#cbd5e1; font-size:1rem; }
+        ul, ol { padding-right:24px; margin:12px 0 16px; }
+        li { margin-bottom:8px; }
+        .highlight-box { background:#0f172a; border-radius:16px; padding:20px 24px; margin:24px 0; border:1px solid #334155; }
+        .highlight-box strong { color:#facc15; }
+        .code-block { font-family:'JetBrains Mono','Fira Code','Consolas',monospace; font-size:0.85rem; direction:ltr; text-align:left; display:block; background:#0f172a; padding:18px 20px; border-radius:14px; overflow-x:auto; white-space:pre-wrap; word-break:break-word; border:1px solid #2d3a4f; color:#e2e8f0; margin:16px 0; line-height:1.6; max-height:500px; overflow-y:auto; }
+        .code-block::-webkit-scrollbar { width:6px; height:6px; }
+        .code-block::-webkit-scrollbar-track { background:#1e293b; }
+        .code-block::-webkit-scrollbar-thumb { background:#475569; border-radius:10px; }
+        .btn-copy { background:#0ea5e9; color:#0f172a; border:none; font-weight:700; padding:10px 22px; border-radius:60px; cursor:pointer; font-size:0.9rem; transition:all 0.2s ease; margin-top:6px; display:inline-block; letter-spacing:0.3px; }
+        .btn-copy:hover { background:#38bdf8; transform:scale(1.02); box-shadow:0 0 20px rgba(14,165,233,0.35); }
+        .btn-custom { background:#28a745; color:white; border:none; padding:10px 18px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; margin:2px; }
+        .btn-custom:hover { opacity:0.9; }
+        .btn-custom.orange { background:#fd7e14; }
+        .btn-custom.blue { background:#007bff; }
+        .btn-custom.red { background:#dc3545; }
+        .step { background:#0f172a; border-radius:14px; padding:18px 22px; margin:14px 0; border-right:4px solid #0ea5e9; }
+        .step strong { color:#facc15; }
+        .grid-features { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:20px 0; }
+        .feature-card { background:#0f172a; border-radius:16px; padding:18px 16px; text-align:center; border:1px solid #2d3a4f; transition:0.2s; }
+        .feature-card:hover { border-color:#0ea5e9; }
+        .feature-card .icon { font-size:2rem; display:block; margin-bottom:6px; }
+        .feature-card .title { font-weight:600; color:#f1f5f9; }
+        .feature-card .desc { font-size:0.9rem; color:#94a3b8; }
+        .donation-area { background:linear-gradient(135deg,#1e293b,#0f172a); border:2px dashed #facc15; border-radius:16px; padding:20px; text-align:center; margin:30px 0 10px; }
+        .donation-area p { color:#facc15; font-weight:600; margin-bottom:12px; }
+        .donation-area a:hover { opacity:0.85; transform:scale(1.02); }
+        .warning { background:#451a1a; border:1px solid #991b1b; border-radius:14px; padding:16px 22px; margin:20px 0; color:#fca5a5; }
+        .warning strong { color:#f87171; }
+        .footer { text-align:center; margin-top:40px; padding-top:24px; border-top:1px solid #334155; color:#64748b; font-size:0.9rem; }
+        .footer .signature { font-size:0.9rem; }
+        @media (max-width:640px) { .container { padding:20px 16px; } h1 { font-size:1.9rem; } .code-block { font-size:0.75rem; padding:14px 12px; } }
+        #t { color:white; background-color:#888; margin:10px; padding:20px; border-radius:10px; display:none; text-align:center; font-weight:bolder; font-size:18px; }
+        .f { float:left; border:1px solid #bbb; border-radius:5px; padding:10px; line-height:2em; margin:5px; }
+        .f ul { margin:0; padding:0; }
+        .f ul li { display:inline; margin-right:10px; }
+        .p { border-bottom:1px solid #ccc; width:auto; height:20px; }
+        .v { height:20px; border-right:1px solid #ccc; padding-left:20px; }
+        #best_band { margin:20px auto; max-width:800px; clear:both; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SHAINEL HEADER -->
+    <div class="shainel-header">✍️ SHAINEL - الإصدار 6.0</div>
+
+    <h1>📡 سكربت اختيار التردد الأمثل</h1>
+    <div class="subtitle">
+        <span class="badge">هواوي 4G / 5G</span>
+        <span style="margin:0 10px;">•</span>
+        الإصدار 6.0
+        <span style="margin:0 10px;">•</span>
+        تحليل احترافي للإشارة
+        <span style="margin:0 10px;">•</span>
+        <span class="signature">SHAINEL</span>
+    </div>
+
+    <p style="font-size:1.1rem; margin-bottom:20px;">
+        هذا السكربت يُمكنك من <strong>اختيار أفضل تردد (Band)</strong> لراوتر هواوي الخاص بك تلقائياً،
+        بناءً على قراءات حية للإشارة <strong>(RSRP، RSRQ، SINR)</strong> من البرج المتصل به.
+        لا حاجة للخبرة التقنية — فقط <strong>نسخ ولصق</strong> في وحدة التحكم (Console) والضغط على زر واحد.
+    </p>
+
+    <!-- FEATURES -->
+    <div class="grid-features">
+        <div class="feature-card"><span class="icon">🔍</span><div class="title">مسح ذكي</div><div class="desc">يجرب جميع الترددات المدعومة في جهازك</div></div>
+        <div class="feature-card"><span class="icon">📊</span><div class="title">تحليل متقدم</div><div class="desc">يقيس RSRP، RSRQ، SINR ويعطي درجة جودة</div></div>
+        <div class="feature-card"><span class="icon">🎯</span><div class="title">اختيار أمثل</div><div class="desc">يختار التردد صاحب أعلى إشارة واستقرار</div></div>
+        <div class="feature-card"><span class="icon">⚡</span><div class="title">تطبيق فوري</div><div class="desc">يُطبّق التردد المثالي على الراوتر بنقرة</div></div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <h2>🚀 طريقة الاستخدام</h2>
+    <div class="step"><strong>الخطوة 1:</strong> افتح صفحة إدارة الراوتر (عادةً <code style="background:#1e293b;padding:2px 10px;border-radius:6px;">192.168.8.1</code> أو <code style="background:#1e293b;padding:2px 10px;border-radius:6px;">192.168.1.1</code>) وسجّل الدخول.</div>
+    <div class="step"><strong>الخطوة 2:</strong> اضغط على زر <code style="background:#1e293b;padding:2px 10px;border-radius:6px;">F12</code> في لوحة المفاتيح، ثم اختر تبويب <strong>Console</strong> (وحدة التحكم).</div>
+    <div class="step"><strong>الخطوة 3:</strong> انسخ السكربت من المربع أدناه (اضغط زر <strong>نسخ</strong>) والصقه في الـ Console، ثم اضغط <strong>Enter</strong>.</div>
+    <div class="step"><strong>الخطوة 4:</strong> ستظهر في أعلى صفحة الراوتر أزرار جديدة. اضغط على <strong>🤖 Auto Select Best Band</strong>.</div>
+    <div class="step"><strong>الخطوة 5:</strong> انتظر 20–30 ثانية حتى يكتمل المسح. ستظهر رسالة بالتردد المثالي وجودة الإشارة، وسيتم تطبيقه تلقائياً.</div>
+
+    <!-- SCRIPT CODE -->
+    <h2>📜 السكربت الكامل</h2>
+    <p>انسخ هذا الكود كاملاً والصقه في الـ Console:</p>
+
+    <div style="position:relative;">
+        <button class="btn-copy" id="copyBtn" onclick="copyScriptWithAd()">📋 نسخ السكربت</button>
+        
+        <!-- السكربت مخفى داخل textarea لحمايته من تفسير المتصفح -->
+        <textarea id="scriptBlock" style="display:none;">
+// ============================================================
+//  🚀 سكربت هواوي المتقدم - الإصدار 6.0 (نسخة Console)
+//  ✍️ تم التطوير بواسطة: SHAINEL
+//  ☕ ادعم المشروع: https://ko-fi.com/shainel
+// ============================================================
+
+// ------ المتغيرات العامة ------
+var mainband = null,
+    _2ndrun = null,
+    suspend = 0,
+    status = "",
+    netmode = "",
+    signal = "",
+    version = "6.0",
+    scanResults = [],
+    bestBand = null,
+    routerType = "unknown";
+
+// ============================================================
+//  أكواد الإعلانات (تعمل عند الضغط على الأزرار)
+// ============================================================
+
+// 1. إعلان Monetag (لزر نسخ السكربت - اختياري)
+window.triggerMonetagOnclick = function() {
+    if (sessionStorage.getItem('monetag_click_triggered') === 'true') {
+        console.log("⚠️ إعلان Monetag ظهر مسبقاً في هذه التحميلة");
+        return;
+    }
+    try {
+        window.open('https://omg10.com/4/11239187', '_blank');
+        sessionStorage.setItem('monetag_click_triggered', 'true');
+        console.log("✅ تم فتح إعلان Monetag");
+    } catch (e) {
+        console.error("❌ خطأ في تشغيل Monetag:", e);
+    }
+};
+
+// 2. إعلان Adsterra (لزر Auto Select Best Band)
+window.triggerAdsterra = function() {
+    if (sessionStorage.getItem('adsterra_auto_triggered') === 'true') {
+        console.log("⚠️ إعلان Adsterra ظهر مسبقاً في هذه التحميلة");
+        return;
+    }
+    try {
+        var script = document.createElement('script');
+        script.src = "https://pl30206214.effectivecpmnetwork.com/d4/fc/e8/d4fce8059900325eea73d34a991c4011.js";
+        document.head.appendChild(script);
+        sessionStorage.setItem('adsterra_auto_triggered', 'true');
+        console.log("✅ تم تشغيل إعلان Adsterra");
+    } catch (e) {
+        console.error("❌ خطأ في تشغيل Adsterra:", e);
+    }
+};
+
+// ------ دوال المساعدة الأساسية ------
+function err(n, e, r) {
+    console.error("❌ خطأ في الاتصال:", n);
+    console.error("   التفاصيل:", e);
+    console.error("   الرسالة:", r);
+}
+
+function extractXML(n, e) {
+    try {
+        return e.split("</" + n + ">")[0].split("<" + n + ">")[1];
+    } catch (n) {
+        return null;
+    }
+}
+
+function setgraph(n, r, t, a) {
+    // ✅ إصلاح ظهور undefined: إذا كانت القيمة غير موجودة نعرض --
+    if (r === undefined || r === null || r === 'undefined' || r === 'null') {
+        $("#" + n + "b").html(n.replace("nr", "5G - ") + " : --").css("background-color", "#555").css("color", "#ccc");
+        return;
+    }
+    r = parseInt(r.replace("dBm", "").replace("dB", ""));
+    x = (r - t) / (a - t) * 100;
+    xs = String(x) + String.fromCharCode(37);
+    e = "#" + n + "b";
+    $(e).animate({ width: xs });
+    $(e).html(n.replace("nr", "5G - ") + " : " + window[n]);
+    x < 50 ? $(e).css("background-color", "yellow").css("color", "black") : (85 < x ? $(e).css("background-color", "orange") : $(e).css("background-color", "green")).css("color", "white");
+}
+
+function _4GType(n) {
+    if (!n) return "غير معروف";
+    for (data_out = "", x = 0; x < 90; x++) {
+        tb = Math.pow(2, x);
+        color = BigInt("0x" + n) & BigInt(tb) ? (data_out += "B" + String(x + 1) + "+", "#686") : "transparent";
+        $("#cb" + String(x + 1)).css("background-color", color);
+    }
+    return data_out = data_out.replace(/\++$/, ""), data_out || "لا يوجد";
+}
+
+// ------ دوال جلب البيانات ------
+function getAntenna(callback) {
+    $.ajax({
+        dataType: "text",
+        type: "GET",
+        async: true,
+        url: "/api/device/antenna_type",
+        error: function() { callback && callback(false); },
+        success: function(n) {
+            antenna1type = extractXML("antenna1type", n);
+            antenna2type = extractXML("antenna2type", n);
+            "1" == antenna1type ? $("#a1").html("EXT") : $("#a1").html("INT");
+            "1" == antenna2type ? $("#a2").html("EXT") : $("#a2").html("INT");
+            callback && callback(true);
+        }
+    });
+}
+
+function getNetmode(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "text",
+        async: true,
+        url: "/api/net/net-mode",
+        error: function() { callback && callback(false); },
+        success: function(n) {
+            netmode = n;
+            lteband = extractXML("LTEBand", n);
+            $("#allowed").html(_4GType(lteband));
+            callback && callback(true);
+        }
+    });
+}
+
+function getStatus(callback) {
+    $.ajax({
+        type: "GET",
+        dataType: "text",
+        async: true,
+        url: "/api/monitoring/status",
+        error: function() { callback && callback(false); },
+        success: function(n) {
+            status = n;
+            is4gp = 1011 == extractXML("CurrentNetworkTypeEx", n) ? 1 : 0;
+            is4gp ? $("#mode").html("4G+").css("color", "red") : $("#mode").html("-").css("color", "#aaa");
+            callback && callback(true);
+        }
+    });
+}
+
+// ------ الدالة الأساسية لتحديث القراءات (تم تعديلها) ------
+function currentBand() {
+    if (1 != suspend) {
+        $("#dhcp_mask").show();
+        $("#dhcp_dns").show();
+        $.ajax({
+            dataType: "text",
+            type: "GET",
+            async: true,
+            url: "/api/device/signal",
+            error: function() { /* لا نعرض أخطاء أثناء التحديث التلقائي */ },
+            success: function(n) {
+                for (signal = n, vars = ["nrrsrq", "nrrsrp", "nrsinr", "rssi", "rsrp", "rsrq", "sinr", "dlbandwidth", "ulbandwidth", "band", "cell_id", "plmn"], i = 0; i < vars.length; i++) {
+                    window[vars[i]] = extractXML(vars[i], n);
+                    // ✅ إصلاح ظهور undefined: إذا كانت القيمة غير موجودة نعرض --
+                    var displayVal = window[vars[i]];
+                    if (displayVal === undefined || displayVal === null || displayVal === 'undefined' || displayVal === 'null') {
+                        displayVal = '--';
+                    }
+                    if ($("#" + vars[i]).length) $("#" + vars[i]).html(displayVal);
+                }
+                nrdefined = "undefined" != typeof nrrsrp && nrrsrp !== null && nrrsrp !== '--';
+                $(".e5").toggle(nrdefined);
+                if (nrdefined) {
+                    setgraph("nrrsrp", nrrsrp, -130, -70);
+                    setgraph("nrrsrq", nrrsrq, -16, -3);
+                    routerType = "5G";
+                } else {
+                    routerType = "4G";
+                }
+                setgraph("rsrp", rsrp, -130, -70);
+                setgraph("rsrq", rsrq, -16, -3);
+                hex = Number(cell_id).toString(16);
+                hex2 = hex.substring(0, hex.length - 2);
+                enbid = parseInt(hex2, 16).toString();
+                $("#enbid").html(enbid);
+                if (plmn) {
+                    "22201" == plmn && (plmn = "2221");
+                    "22299" == plmn && (plmn = "22288");
+                    "22250" == plmn && 6 == enbid.length && (plmn = "22288");
+                    link_lte = "https://lteitaly.it/internal/map.php#bts=" + plmn + "." + enbid;
+                    $("#lteitaly").attr("href", link_lte);
+                }
+            }
+        });
+        getNetmode();
+        getStatus();
+        getAntenna();
+    }
+}
+
+// ------ دالة تعيين النطاق يدوياً (معدلة) ------
+function ltebandselection(n) {
+    if (mainband = mainband && null, 0 == arguments.length) {
+        if (null == (e = (e = prompt("Please input LTE bands number, separated by + char (example 1+3+20).If you want to use every supported bands, write 'AUTO'.", "AUTO")) && e.toLowerCase()) || "" === e) return
+    } else var e = arguments[0];
+    var n = e.split("+"),
+        t = 0;
+    if ("AUTO" === e.toUpperCase()) t = "7FFFFFFFFFFFFFFF";
+    else {
+        for (var r = 0; r < n.length; r++) {
+            if (-1 != n[r].toLowerCase().indexOf("m") && (n[r] = n[r].replace("m", ""), mainband = n[r]), "AUTO" === n[r].toUpperCase()) {
+                t = "7FFFFFFFFFFFFFFF";
+                break
+            }
+            t += Math.pow(2, parseInt(n[r]) - 1)
+        }
+        t = t.toString(16)
+    }
+    if (mainband) return _2ndrun = n, void ltebandselection(String(mainband));
+    suspend = 1;
+    $("#t").html("⏳ جاري التطبيق... يرجى الانتظار").show();
+    $.ajax({
+        type: "GET",
+        dataType: "text",
+        async: !0,
+        url: "/html/home.html",
+        error: err,
+        success: function(n) {
+            var n = n.split('name="csrf_token" content="'),
+                e = n[n.length - 1].split('"')[0],
+                r = "00";
+            $("#force4g").is(":checked") && (r = "03");
+            setTimeout(function() {
+                $.ajax({
+                    type: "POST",
+                    async: !0,
+                    url: "/api/net/net-mode",
+                    headers: { __RequestVerificationToken: e },
+                    contentType: "application/xml",
+                    data: "<request><NetworkMode>" + r + "</NetworkMode><NetworkBand>3FFFFFFF</NetworkBand><LTEBand>" + t + "</LTEBand></request>",
+                    success: function(n) {
+                        $("#band").html('<span style="color:green;">✅ تم التطبيق</span>');
+                        if (_2ndrun) {
+                            window.setTimeout(function() {
+                                ltebandselection(_2ndrun.join("+"));
+                                _2ndrun = !1;
+                            }, 2e3);
+                        } else {
+                            suspend = 0;
+                            $("#t").hide("");
+                            setTimeout(currentBand, 1500);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        err(xhr, status, error);
+                        suspend = 0;
+                        $("#t").html("❌ فشل التطبيق").css("background-color", "#d9534f").delay(3000).fadeOut();
+                    }
+                });
+            }, 2e3);
+        }
+    });
+}
+
+// ============================================================
+//  ❗❗ الإضافات الجديدة (المسح التلقائي واختيار أفضل تردد)
+// ============================================================
+
+// 1. دالة لترجمة رقم النطاق إلى تردد (MHz)
+function getBandInfo(band) {
+    var bandInfo = {
+        1: { freq: 2100, name: "2100" },
+        2: { freq: 1900, name: "1900" },
+        3: { freq: 1800, name: "1800" },
+        4: { freq: 1700, name: "1700" },
+        5: { freq: 850, name: "850" },
+        7: { freq: 2600, name: "2600" },
+        8: { freq: 900, name: "900" },
+        12: { freq: 700, name: "700" },
+        13: { freq: 700, name: "700" },
+        17: { freq: 700, name: "700" },
+        18: { freq: 850, name: "850" },
+        19: { freq: 850, name: "850" },
+        20: { freq: 800, name: "800" },
+        21: { freq: 1500, name: "1500" },
+        25: { freq: 1900, name: "1900" },
+        26: { freq: 850, name: "850" },
+        28: { freq: 700, name: "700" },
+        32: { freq: 1500, name: "1500" },
+        38: { freq: 2600, name: "2600 (TD)" },
+        39: { freq: 1900, name: "1900 (TD)" },
+        40: { freq: 2300, name: "2300 (TD)" },
+        41: { freq: 2500, name: "2500 (TD)" },
+        42: { freq: 3500, name: "3500" },
+        43: { freq: 3700, name: "3700" },
+        46: { freq: 5200, name: "5200" },
+        48: { freq: 3500, name: "3500" },
+        66: { freq: 1700, name: "1700" },
+        71: { freq: 600, name: "600" }
+    };
+    return bandInfo[band] || { freq: "غير معروف", name: "غير معروف" };
+}
+
+// 2. دالة لجلب قراءات الإشارة الحالية
+function getCurrentMetrics() {
+    var rsrp_val = parseInt(window.rsrp) || -999;
+    var rsrq_val = parseFloat(window.rsrq) || -999;
+    var sinr_val = parseFloat(window.sinr) || -999;
+    var current_band = window.band || 'غير معروف';
+    return {
+        rsrp: rsrp_val,
+        rsrq: rsrq_val,
+        sinr: sinr_val,
+        band: current_band
+    };
+}
+
+// 3. دالة لتعيين نطاق معين مباشرة (معدلة)
+function doSetBand(bandStr, silent, callback) {
+    var bands = bandStr.split('+');
+    var t = 0;
+    for (var i = 0; i < bands.length; i++) {
+        if (-1 != bands[i].toLowerCase().indexOf("m")) {
+            bands[i] = bands[i].replace("m", "");
+        }
+        if ("AUTO" === bands[i].toUpperCase()) {
+            t = "7FFFFFFFFFFFFFFF";
+            break;
+        }
+        t += Math.pow(2, parseInt(bands[i]) - 1);
+    }
+    var hexBand = t.toString(16);
+
+    $.ajax({
+        type: "GET",
+        dataType: "text",
+        async: false,
+        url: "/html/home.html",
+        error: function() {
+            if (callback) callback(false, "فشل في جلب التوكن");
+        },
+        success: function(data) {
+            var parts = data.split('name="csrf_token" content="');
+            if (parts.length < 2) {
+                if (callback) callback(false, "لم يتم العثور على التوكن");
+                return;
+            }
+            var token = parts[parts.length - 1].split('"')[0];
+            var mode = "00";
+            if ($("#force4g").is(":checked")) mode = "03";
+
+            $.ajax({
+                type: "POST",
+                async: true,
+                url: "/api/net/net-mode",
+                headers: { __RequestVerificationToken: token },
+                contentType: "application/xml",
+                data: "<request><NetworkMode>" + mode + "</NetworkMode><NetworkBand>3FFFFFFF</NetworkBand><LTEBand>" + hexBand + "</LTEBand></request>",
+                success: function() {
+                    if (!silent) {
+                        $("#band").html('<span style="color:green;">✅ تم التطبيق</span>');
+                    }
+                    if (callback) callback(true, "تم التطبيق بنجاح");
+                },
+                error: function(xhr, status, error) {
+                    err(xhr, status, error);
+                    if (callback) callback(false, "خطأ في التطبيق: " + error);
+                }
+            });
+        }
+    });
+}
+
+// 4. دالة لتقييم جودة الإشارة وإعطاء درجة (0-100)
+function evaluateSignal(rsrp, rsrq, sinr) {
+    var score = 0;
+    if (rsrp >= -80) score += 40;
+    else if (rsrp >= -90) score += 30;
+    else if (rsrp >= -100) score += 20;
+    else if (rsrp >= -110) score += 10;
+    else score += 5;
+
+    if (rsrq >= -8) score += 30;
+    else if (rsrq >= -12) score += 20;
+    else if (rsrq >= -16) score += 10;
+    else score += 5;
+
+    if (sinr >= 20) score += 30;
+    else if (sinr >= 15) score += 20;
+    else if (sinr >= 10) score += 10;
+    else score += 5;
+
+    return Math.min(score, 100);
+}
+
+// 5. الدالة الرئيسية للمسح التلقائي واختيار الأفضل
+function autoSelectBand() {
+    if (window.triggerAdsterra) {
+        window.triggerAdsterra();
+    }
+
+    var supportedBands = [3, 7, 20, 1, 8, 28, 38, 40, 41, 5, 12, 13, 17, 18, 19, 21, 25, 26, 32, 42, 43, 46, 48, 66, 71];
+    var results = [];
+    var index = 0;
+    var totalBands = supportedBands.length;
+
+    suspend = 1;
+    scanResults = [];
+    bestBand = null;
+
+    updateStatus("📡 جاري مسح الترددات... (0/" + totalBands + ")", "#888");
+
+    function testNextBand() {
+        if (index >= totalBands) {
+            finishScan(results);
+            return;
+        }
+
+        var band = supportedBands[index];
+        updateStatus("📡 جاري تحليل التردد " + band + " (" + (index + 1) + "/" + totalBands + ")", "#888");
+        console.log("🔄 [ " + (index + 1) + "/" + totalBands + " ] تجربة النطاق: " + band);
+
+        doSetBand(String(band), true, function(success, msg) {
+            if (!success) {
+                console.warn("   ⚠️ فشل في تعيين النطاق " + band + ": " + msg);
+                results.push({ band: band, rsrp: -999, rsrq: -999, sinr: -999, score: 0, success: false });
+                index++;
+                testNextBand();
+                return;
+            }
+
+            setTimeout(function() {
+                currentBand();
+                setTimeout(function() {
+                    var metrics = getCurrentMetrics();
+                    var rsrp = metrics.rsrp;
+                    var rsrq = metrics.rsrq;
+                    var sinr = metrics.sinr;
+
+                    if (rsrp <= -999 || rsrp > 0) {
+                        console.warn("   ⚠️ قراءات غير صالحة للنطاق " + band);
+                        results.push({ band: band, rsrp: -999, rsrq: -999, sinr: -999, score: 0, success: false });
+                    } else {
+                        var score = evaluateSignal(rsrp, rsrq, sinr);
+                        var bandInfo = getBandInfo(band);
+                        results.push({
+                            band: band,
+                            rsrp: rsrp,
+                            rsrq: rsrq,
+                            sinr: sinr,
+                            score: score,
+                            freq: bandInfo.freq,
+                            success: true
+                        });
+                        console.log("   📊 " + band + " (" + bandInfo.freq + "MHz): RSRP=" + rsrp + ", RSRQ=" + rsrq + ", SINR=" + sinr + " ⭐ درجة=" + score);
+                    }
+
+                    index++;
+                    testNextBand();
+                }, 1500);
+            }, 2500);
+        });
+    }
+
+    function finishScan(results) {
+        var validResults = results.filter(function(r) { return r.success && r.rsrp > -999; });
+
+        if (validResults.length === 0) {
+            updateStatus("❌ لم يتم العثور على ترددات صالحة!", "#d9534f");
+            alert("⚠️ لم يتم العثور على أي نطاق صالح.\nتأكد من تغطية الشبكة أو حاول مرة أخرى.");
+            suspend = 0;
+            setTimeout(function() { $("#t").hide(); }, 3000);
+            return;
+        }
+
+        validResults.sort(function(a, b) { return b.score - a.score; });
+        var best = validResults[0];
+        bestBand = best;
+
+        var bandInfo = getBandInfo(best.band);
+        var frequency = bandInfo.freq + " MHz";
+        var scorePercentage = best.score + "%";
+
+        var message = "✅ تم اختيار التردد الأفضل تلقائياً!\n\n" +
+            "📡 النطاق (Band): " + best.band + "\n" +
+            "📶 التردد: " + frequency + "\n" +
+            "📊 قوة الإشارة (RSRP): " + best.rsrp + " dBm\n" +
+            "📊 جودة الإشارة (RSRQ): " + best.rsrq + " dB\n" +
+            "📊 نسبة الإشارة للضوضاء (SINR): " + best.sinr + " dB\n" +
+            "⭐ الجودة الإجمالية: " + scorePercentage + "\n\n" +
+            "🔄 سيتم تطبيق هذا النطاق الآن.";
+
+        alert(message);
+
+        // عرض نتيجة المسح (بشكل كامل وصحيح)
+        $("#best_band").html(`
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 20px; text-align: center; margin: 25px auto; max-width: 700px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 3px solid #fff;">
+                🏆 <b>التردد المثالي المُختار</b><br>
+                <span style="font-size: 40px; display: block; margin: 10px 0;">${best.band} (${frequency})</span>
+                <span style="font-size: 18px; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 30px; display: inline-block; margin: 5px;">RSRP: ${best.rsrp} dBm</span>
+                <span style="font-size: 18px; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 30px; display: inline-block; margin: 5px;">RSRQ: ${best.rsrq} dB</span>
+                <span style="font-size: 18px; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 30px; display: inline-block; margin: 5px;">SINR: ${best.sinr} dB</span>
+                <br><span style="font-size: 16px; background: #28a745; padding: 5px 20px; border-radius: 30px; display: inline-block; margin-top: 10px;">⭐ الجودة: ${scorePercentage}</span>
+            </div>
+        `);
+
+        showResultsTable(validResults);
+
+        console.log("🏆 أفضل نطاق تم اختياره: " + best.band + " (" + frequency + ")");
+        console.log("   النتائج الكاملة:", validResults);
+
+        updateStatus("✅ تم اختيار التردد " + best.band + " (" + frequency + ")", "#28a745");
+
+        doSetBand(String(best.band), false, function(success) {
+            suspend = 0;
+            if (success) {
+                updateStatus("✅ تم تطبيق التردد المثالي!", "#28a745");
+                setTimeout(function() {
+                    $("#t").fadeOut();
+                    currentBand();
+                }, 2000);
+            } else {
+                updateStatus("❌ فشل في تطبيق التردد!", "#d9534f");
+            }
+        });
+    }
+
+    function updateStatus(msg, color) {
+        $("#t").html(msg).css("background-color", color || "#888").show();
+    }
+
+    function showResultsTable(results) {
+        var html = '<div style="margin: 20px auto; max-width: 700px; background: #f8f9fa; border-radius: 10px; padding: 15px; border: 1px solid #ddd;">';
+        html += '<h4 style="margin-top: 0; color: #333;">📊 نتائج المسح الكاملة</h4>';
+        html += '<table style="width: 100%; border-collapse: collapse; font-size: 14px;">';
+        html += '<tr style="background: #e9ecef;"><th>التردد</th><th>RSRP</th><th>RSRQ</th><th>SINR</th><th>الدرجة</th><th>الحالة</th></tr>';
+        results.forEach(function(r) {
+            var color = r.score >= 70 ? "#28a745" : (r.score >= 50 ? "#ffc107" : "#dc3545");
+            html += '<tr style="border-bottom: 1px solid #ddd;">';
+            html += '<td><b>' + r.band + '</b> (' + (r.freq || '?') + 'MHz)</td>';
+            html += '<td>' + (r.rsrp > -999 ? r.rsrp + ' dBm' : '---') + '</td>';
+            html += '<td>' + (r.rsrq > -999 ? r.rsrq + ' dB' : '---') + '</td>';
+            html += '<td>' + (r.sinr > -999 ? r.sinr + ' dB' : '---') + '</td>';
+            html += '<td><span style="background:' + color + ';color:white;padding:2px 10px;border-radius:10px;">' + r.score + '%</span></td>';
+            html += '<td>' + (r.success ? '✅' : '❌') + '</td>';
+            html += '</tr>';
+        });
+        html += '</table></div>';
+        $("#best_band").append(html);
+    }
+
+    testNextBand();
+}
+
+// 6. دالة لعرض تقرير النتائج السابقة
+function showLastReport() {
+    if (scanResults.length === 0) {
+        alert("⚠️ لا توجد نتائج مسح سابقة.\nقم بتشغيل المسح أولاً.");
+        return;
+    }
+    showResultsTable(scanResults);
+}
+
+// ============================================================
+//  🎨 واجهة المستخدم (مع أزرار إضافية واسم SHAINEL)
+// ============================================================
+
+function ftb() {
+    $(".color_background_blue").css("background-color", "#456");
+    $(".headcontainer").hide();
+
+    $("body").prepend(`
+        <style>
+            #rsrq,#nrrsrq, #rsrp,#nrrsrp, #rssi, #enbid, #sinr,#nrsinr, #cell_id, #band, #allowed, #a1, #a2 {color: #b00; font-weight: strong; }
+            .f {float: left; border: 1px solid #bbb; border-radius: 5px; padding: 10px; line-height: 2em; margin: 5px; }
+            .f ul {margin: 0; padding: 0; }
+            .f ul li {display: inline; margin-right: 10px; }
+            #mode {margin-right: 0 !important; }
+            #enbid {font-weight: bold; text-decoration: underline; }
+            .p {border-bottom: 1px solid #ccc; width: auto; height: 20px; }
+            .v {height: 20px; border-right: 1px solid #ccc; }
+            #t {color: white; background-color: #888; margin: 10px; padding: 20px; border-radius: 10px; display: none; text-align: center; font-weight: bolder; font-size: 18px; }
+            .v {padding-left: 20px; }
+            .btn-custom {background: #28a745; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; margin: 2px; }
+            .btn-custom:hover {opacity: 0.9; }
+            .btn-custom.orange {background: #fd7e14; }
+            .btn-custom.blue {background: #007bff; }
+            .btn-custom.red {background: #dc3545; }
+            .shainel-header { color: #facc15; font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+        </style>
+        <div class="shainel-header">✍️ SHAINEL - الإصدار 6.0</div>
+        <div class="p e5"><div class="v" id="nrrsrpb"></div></div>
+        <div class="p e5"><div class="v" id="nrrsrqb"></div></div>
+        <div class="p"><div class="v" id="rsrpb"></div></div>
+        <div class="p"><div class="v" id="rsrqb"></div></div>
+        <div style="display:block;overflow: auto;">
+            <div id="t"></div>
+            <div class="f">
+                <ul>
+                    <li><a style="font-weight:bolder;background-color: #448;color:white;padding: 10px;border-radius:10px; cursor:pointer;" onclick="ltebandselection()">⚙️ SET</a></li>
+                    <li><label>Force 4G</label><input id="force4g" type="checkbox"></li>
+                </ul>
+            </div>
+            <div class="f">
+                <ul>
+                    <li>RSRP:<span id="rsrp"></span></li>
+                    <li>RSRQ:<span id="rsrq"></span></li>
+                    <li>RSSI:<span id="rssi"></span></li>
+                    <li>SINR:<span id="sinr"></span></li>
+                    <li>Ant:<span id="a1"></span>/<span id="a2"></span></li>
+                </ul>
+            </div>
+            <div class="f e5">
+                <ul>
+                    <li>5-RSRP:<span id="nrrsrp"></span></li>
+                    <li>5-RSRQ:<span id="nrrsrq"></span></li>
+                    <li>5-SINR:<span id="nrsinr"></span></li>
+                </ul>
+            </div>
+            <div class="f">
+                <ul>
+                    <li id="mode">SHAINEL ❤️</li>
+                </ul>
+            </div>
+            <div class="f">
+                <ul>
+                    <li>ENB ID:<a id="lteitaly" target="lteitaly" href="#"><span id="enbid">#</span></a></li>
+                    <li>CELL ID:<span id="cell_id">#</span></li>
+                    <li>MAIN:<span id="band"></span>(<span id="dlbandwidth"></span>/<span id="ulbandwidth"></span>)</li>
+                    <li>ALLOWED:<span id="allowed"></span></li>
+                </ul>
+            </div>
+        </div>
+    `);
+
+    var buttonsHtml = `
+        <div style="clear:both; padding: 10px; background: #f1f3f5; border-radius: 10px; margin: 10px 5px;">
+            <button class="btn-custom" onclick="autoSelectBand()">🤖 Auto Select Best Band</button>
+            <button class="btn-custom orange" onclick="location.reload()">🔄 إعادة تحميل الصفحة</button>
+            <button class="btn-custom blue" onclick="showLastReport()">📊 عرض آخر تقرير</button>
+            <button class="btn-custom red" onclick="if(confirm('هل أنت متأكد؟ سيتم إلغاء قفل الترددات.')){ltebandselection('AUTO');}">🔓 إلغاء القفل (AUTO)</button>
+        </div>
+    `;
+
+    $(".f").first().before(buttonsHtml);
+    $("body").append('<div id="best_band" style="margin: 20px auto; max-width: 800px; clear: both;"></div>');
+}
+
+// ============================================================
+//  🚀 تشغيل السكربت
+// ============================================================
+
+console.log("✅ سكربت هواوي المتقدم - الإصدار " + version);
+console.log("✍️ تم التطوير بواسطة: SHAINEL");
+console.log("☕ ادعم المشروع: https://ko-fi.com/shainel");
+console.log("📌 المميزات:");
+console.log("   - مسح ذكي للترددات");
+console.log("   - تحليل متقدم للإشارة (RSRP, RSRQ, SINR)");
+console.log("   - اختيار تلقائي لأفضل تردد");
+console.log("   - واجهة محسنة مع أزرار إضافية");
+
+window.setInterval(currentBand, 2500);
+ftb();
+
+console.log("✅ السكربت جاهز! اضغط على زر 'Auto Select Best Band' لبدء المسح.");
+console.log("✍️ SHAINEL © 2026");
+        </textarea>
+    </div>
+
+    <!-- KO-FI DONATION BUTTON -->
+    <div class="donation-area">
+        <p>☕ دعم المشروع • شكراً لك!</p>
+        <a href='https://ko-fi.com/shainel' target='_blank'>
+            <img height='48' style='border:0px;height:48px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+        </a>
+        <p style="font-size:0.9rem; color:#94a3b8; margin-top:8px;">
+            إذا استفدت من السكربت، يمكنك دعم المطور <strong>SHAINEL</strong> من خلال Ko-fi
+        </p>
+    </div>
+
+    <!-- NOTES -->
+    <h2>📌 ماذا سيحدث بعد تشغيل السكربت؟</h2>
+    <ul>
+        <li><strong>إضافة أزرار جديدة</strong> في أعلى صفحة الراوتر (زر المسح التلقائي، عرض التقرير، إلغاء القفل).</li>
+        <li><strong>مسح ذكي</strong> لجميع النطاقات المدعومة في جهازك (ترتيب حسب الأكثر شيوعاً).</li>
+        <li><strong>تحليل متقدم</strong> لكل نطاق: قوة الإشارة (RSRP)، جودتها (RSRQ)، نسبة الضوضاء (SINR).</li>
+        <li><strong>تقييم</strong> كل نطاق بدرجة (0–100) بناءً على القراءات.</li>
+        <li><strong>اختيار التردد الأمثل</strong> صاحب أعلى درجة، ثم تطبيقه تلقائياً.</li>
+        <li><strong>عرض النتائج</strong> في رسالة منبثقة وبطاقة تفصيلية وجدول كامل للمسح.</li>
+    </ul>
+
+    <!-- TECHNICAL DETAILS -->
+    <h2>⚙️ التفاصيل التقنية</h2>
+    <div class="highlight-box">
+        <p><strong>نوع الأجهزة المدعومة:</strong> راوترات هواوي 4G/5G التي تستخدم واجهة API (مثل B525، B535، B618، CPE Pro H112، H122).</p>
+        <p><strong>المتطلبات:</strong> متصفح حديث (Chrome، Firefox، Edge)، صفحة الراوتر مفتوحة ومسجل الدخول، وجود مكتبة jQuery (موجودة مسبقاً في واجهة هواوي).</p>
+        <p><strong>الخوارزمية:</strong> تعتمد على تجربة النطاقات المدعومة واحداً تلو الآخر، قياس الإشارة لكل منها، ثم اختيار الأعلى جودة باستخدام معادلة وزن مرجحة.</p>
+        <p><strong>السلامة:</strong> السكربت لا يرسل أي بيانات خارجية، ولا يعدل أي إعدادات خارج نطاق الترددات. يمكن التراجع عنه بتعيين <code style="background:#1e293b;padding:2px 8px;border-radius:4px;">AUTO</code> عبر زر "إلغاء القفل".</p>
+    </div>
+
+    <!-- WARNING -->
+    <div class="warning">
+        <strong>⚠️ تنبيه مهم:</strong>
+        <ul style="margin-top:8px;">
+            <li>هذا السكربت مخصص لأجهزة <strong>هواوي</strong> فقط. لن يعمل مع ZTE أو Netgear أو TP-Link.</li>
+            <li>تغيير التردد قد يؤدي إلى <strong>فقدان الاتصال بالإنترنت</strong> لبضع ثوانٍ أثناء المسح.</li>
+            <li>إذا واجهت مشكلة، يمكنك إعادة تشغيل الراوتر أو الضغط على زر <strong>"إلغاء القفل (AUTO)"</strong> للعودة إلى الوضع التلقائي.</li>
+            <li>استخدام السكربت على مسؤوليتك الشخصية. نحن لسنا مسؤولين عن أي ضرر قد يحدث للجهاز.</li>
+        </ul>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        ⚡ الإصدار 6.0 • تم التطوير بواسطة <span class="signature" style="font-size:0.9rem;">SHAINEL</span>
+        <br />
+        <span style="font-size:0.8rem; color:#475569;">
+            هذا السكربت مقدم مجاناً للمساعدة في تحسين تجربة الإنترنت.
+        </span>
+        <br />
+        <span style="font-size:0.7rem; color:#334155;">☕ ادعم المشروع على Ko-fi: <a href="https://ko-fi.com/shainel" target="_blank" style="color:#facc15;">ko-fi.com/shainel</a></span>
+        <br />
+        <span style="font-size:0.7rem; color:#334155;">© 2026 SHAINEL - جميع الحقوق محفوظة</span>
+    </div>
+
+</div>
+
+<!-- ====== جافا سكريبت: وظائف النسخ والإعلانات ====== -->
+<script>
+    function copyScriptWithAd() {
+        // 1. نسخ الكود من الـ textarea المخفي
+        const code = document.getElementById('scriptBlock').value;
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerText;
+            btn.innerText = '✅ تم النسخ!';
+            setTimeout(() => { btn.innerText = original; }, 2500);
+        }).catch(() => {
+            // في حال فشل Clipboard API، نستخدم الطريقة التقليدية
+            const textarea = document.getElementById('scriptBlock');
+            textarea.style.display = 'block';
+            textarea.select();
+            document.execCommand('copy');
+            textarea.style.display = 'none';
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerText;
+            btn.innerText = '✅ تم النسخ!';
+            setTimeout(() => { btn.innerText = original; }, 2500);
+        });
+
+        // 2. تشغيل إعلان Monetag
+        if (window.triggerMonetagOnclick) {
+            window.triggerMonetagOnclick();
+        }
+    }
+
+    console.log("✅ تم تحميل صفحة SHAINEL - سكربت هواوي المتقدم");
+    console.log("☕ ادعم المشروع: https://ko-fi.com/shainel");
+    console.log("📢 إعلانات الصفحة:");
+    console.log("   - Monetag Direct Link: يظهر عند الضغط على زر 'نسخ السكربت'");
+    console.log("   - Adsterra Popunder: يظهر عند الضغط على زر 'Auto Select Best Band'");
+    console.log("🖼️ تم تحديث صورة المعاينة (OG Image) باستخدام الرابط: https://i.ibb.co/C526smmY/Jul-4-2026-07-48-37-PM-1.png");
+    console.log("✍️ SHAINEL © 2026");
+</script>
+
+</body>
+</html>
