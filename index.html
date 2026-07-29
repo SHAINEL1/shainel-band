@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ====== OPEN GRAPH / SOCIAL MEDIA PREVIEW ====== -->
+    <title>سكربت هواوي - اختيار التردد الأمثل تلقائياً</title>
+
+    <meta property="og:title" content="سكربت هواوي - اختيار التردد الأمثل تلقائياً" />
+    <meta property="og:description" content="سكربت احترافي لراوترات هواوي 4G/5G، يقوم بمسح الترددات وتحليل الإشارة واختيار الأفضل تلقائياً." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shainel-band.netlify.app/" />
+    <meta property="og:image" content="https://i.ibb.co/C526smmY/Jul-4-2026-07-48-37-PM-1.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="سكربت هواوي - شعار SHAINEL" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="سكربت هواوي - اختيار التردد الأمثل تلقائياً" />
+    <meta name="twitter:description" content="سكربت احترافي لراوترات هواوي 4G/5G" />
+    <meta name="twitter:image" content="https://i.ibb.co/C526smmY/Jul-4-2026-07-48-37-PM-1.png" />
+
+    <!-- ====== تحميل مكتبة jQuery (ضرورية) ====== -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- ====== أكواد الإعلانات (Website Codes) ====== -->
+    
+    <!-- 1. Monetag Website Code (Popunder) -->
+    <script>
+        (function(s) {
+            s.dataset.zone = '11239924';
+            s.src = 'https://al5sm.com/tag.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+    </script>
+
+    <!-- 2. Adsterra Website Code (Popunder) -->
+    <script src="https://pl30206214.effectivecpmnetwork.com/d4/fc/e8/d4fce8059900325eea73d34a991c4011.js">
+    </script>
+
+    <!-- ====== الدالة المركزية لتشغيل كلا الإعلانين ====== -->
+    <script>
+        window.triggerAllAds = function() {
+            if (sessionStorage.getItem('ads_triggered') === 'true') {
+                console.log("⚠️ الإعلانات ظهرت مسبقاً في هذه الجلسة");
+                return;
+            }
+            try {
+                window.open('https://omg10.com/4/11239187', '_blank');
+                window.open('https://www.effectivecpmnetwork.com/jzu3xwtkyn?key=ff63c1b243f4d212919734e3baa52bec', '_blank');
+                sessionStorage.setItem('ads_triggered', 'true');
+                console.log("✅ تم تشغيل كلا الإعلانين (Monetag + Adsterra)");
+            } catch (e) {
+                console.error("❌ خطأ في تشغيل الإعلانات:", e);
+            }
+        };
+    </script>
+
+    <!-- ====== الأنماط (CSS) ====== -->
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:#0f172a; font-family:'Segoe UI',Tahoma,sans-serif; padding:40px 20px; color:#e2e8f0; line-height:1.7; }
+        .container { max-width:1000px; margin:0 auto; background:#1e293b; border-radius:28px; padding:40px 45px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.8); border:1px solid #334155; }
+        .shainel-header { color: #facc15; font-weight: bold; font-size: 1.2rem; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; text-align: center; }
+        h1 { font-size:2.6rem; font-weight:700; background:linear-gradient(135deg,#38bdf8,#818cf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-align:center; margin-bottom:8px; }
+        .subtitle { text-align:center; color:#94a3b8; font-size:1.1rem; border-bottom:1px solid #334155; padding-bottom:24px; margin-bottom:30px; }
+        .badge { display:inline-block; background:#0ea5e9; color:#0f172a; font-weight:700; font-size:0.8rem; padding:4px 16px; border-radius:50px; letter-spacing:0.3px; margin-top:6px; }
+        .signature { display:inline-block; background:linear-gradient(135deg,#facc15,#f59e0b); color:#0f172a; font-weight:800; padding:2px 14px; border-radius:30px; letter-spacing:1px; font-size:0.9rem; margin:0 6px; }
+        h2 { font-size:1.7rem; font-weight:600; color:#f1f5f9; margin-top:40px; margin-bottom:16px; border-right:5px solid #0ea5e9; padding-right:16px; }
+        p, li { color:#cbd5e1; font-size:1rem; }
+        ul, ol { padding-right:24px; margin:12px 0 16px; }
+        li { margin-bottom:8px; }
+        .highlight-box { background:#0f172a; border-radius:16px; padding:20px 24px; margin:24px 0; border:1px solid #334155; }
+        .highlight-box strong { color:#facc15; }
+        .code-block { font-family:'JetBrains Mono','Fira Code','Consolas',monospace; font-size:0.85rem; direction:ltr; text-align:left; display:block; background:#0f172a; padding:18px 20px; border-radius:14px; overflow-x:auto; white-space:pre-wrap; word-break:break-word; border:1px solid #2d3a4f; color:#e2e8f0; margin:16px 0; line-height:1.6; max-height:500px; overflow-y:auto; }
+        .code-block::-webkit-scrollbar { width:6px; height:6px; }
+        .code-block::-webkit-scrollbar-track { background:#1e293b; }
+        .code-block::-webkit-scrollbar-thumb { background:#475569; border-radius:10px; }
+        .btn-copy { background:#0ea5e9; color:#0f172a; border:none; font-weight:700; padding:10px 22px; border-radius:60px; cursor:pointer; font-size:0.9rem; transition:all 0.2s ease; margin-top:6px; display:inline-block; letter-spacing:0.3px; }
+        .btn-copy:hover { background:#38bdf8; transform:scale(1.02); box-shadow:0 0 20px rgba(14,165,233,0.35); }
+        .btn-custom { background:#28a745; color:white; border:none; padding:10px 18px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px; margin:2px; }
+        .btn-custom:hover { opacity:0.9; }
+        .btn-custom.orange { background:#fd7e14; }
+        .btn-custom.blue { background:#007bff; }
+        .btn-custom.red { background:#dc3545; }
+        .step { background:#0f172a; border-radius:14px; padding:18px 22px; margin:14px 0; border-right:4px solid #0ea5e9; }
+        .step strong { color:#facc15; }
+        .grid-features { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin:20px 0; }
+        .feature-card { background:#0f172a; border-radius:16px; padding:18px 16px; text-align:center; border:1px solid #2d3a4f; transition:0.2s; }
+        .feature-card:hover { border-color:#0ea5e9; }
+        .feature-card .icon { font-size:2rem; display:block; margin-bottom:6px; }
+        .feature-card .title { font-weight:600; color:#f1f5f9; }
+        .feature-card .desc { font-size:0.9rem; color:#94a3b8; }
+        .donation-area { background:linear-gradient(135deg,#1e293b,#0f172a); border:2px dashed #facc15; border-radius:16px; padding:20px; text-align:center; margin:30px 0 10px; }
+        .donation-area p { color:#facc15; font-weight:600; margin-bottom:12px; }
+        .donation-area a:hover { opacity:0.85; transform:scale(1.02); }
+        .warning { background:#451a1a; border:1px solid #991b1b; border-radius:14px; padding:16px 22px; margin:20px 0; color:#fca5a5; }
+        .warning strong { color:#f87171; }
+        .footer { text-align:center; margin-top:40px; padding-top:24px; border-top:1px solid #334155; color:#64748b; font-size:0.9rem; }
+        .footer .signature { font-size:0.9rem; }
+        @media (max-width:640px) { .container { padding:20px 16px; } h1 { font-size:1.9rem; } .code-block { font-size:0.75rem; padding:14px 12px; } }
+        #t { color:white; background-color:#888; margin:10px; padding:20px; border-radius:10px; display:none; text-align:center; font-weight:bolder; font-size:18px; }
+        .f { float:left; border:1px solid #bbb; border-radius:5px; padding:10px; line-height:2em; margin:5px; }
+        .f ul { margin:0; padding:0; }
+        .f ul li { display:inline; margin-right:10px; }
+        .p { border-bottom:1px solid #ccc; width:auto; height:20px; }
+        .v { height:20px; border-right:1px solid #ccc; padding-left:20px; }
+        #best_band { margin:20px auto; max-width:800px; clear:both; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SHAINEL HEADER -->
+    <div class="shainel-header">✍️ SHAINEL - الإصدار 6.0</div>
+
+    <h1>📡 سكربت اختيار التردد الأمثل</h1>
+    <div class="subtitle">
+        <span class="badge">هواوي 4G / 5G</span>
+        <span style="margin:0 10px;">•</span>
+        الإصدار 6.0
+        <span style="margin:0 10px;">•</span>
+        تحليل احترافي للإشارة
+        <span style="margin:0 10px;">•</span>
+        <span class="signature">SHAINEL</span>
+    </div>
+
+    <p style="font-size:1.1rem; margin-bottom:20px;">
+        هذا السكربت يُمكنك من <strong>اختيار أفضل تردد (Band)</strong> لراوتر هواوي الخاص بك تلقائياً،
+        بناءً على قراءات حية للإشارة <strong>(RSRP، RSRQ، SINR)</strong> من البرج المتصل به.
+        لا حاجة للخبرة التقنية — فقط <strong>نسخ ولصق</strong> في وحدة التحكم (Console) والضغط على زر واحد.
+    </p>
+
+    <!-- FEATURES -->
+    <div class="grid-features">
+        <div class="feature-card"><span class="icon">🔍</span><div class="title">مسح ذكي</div><div class="desc">يجرب جميع الترددات المدعومة في جهازك</div></div>
+        <div class="feature-card"><span class="icon">📊</span><div class="title">تحليل متقدم</div><div class="desc">يقيس RSRP، RSRQ، SINR ويعطي درجة جودة</div></div>
+        <div class="feature-card"><span class="icon">🎯</span><div class="title">اختيار أمثل</div><div class="desc">يختار التردد صاحب أعلى إشارة واستقرار</div></div>
+        <div class="feature-card"><span class="icon">⚡</span><div class="title">تطبيق فوري</div><div class="desc">يُطبّق التردد المثالي على الراوتر بنقرة</div></div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <h2>🚀 طريقة الاستخدام</h2>
+    <div class="step"><strong>الخطوة 1:</strong> افتح صفحة إدارة الراوتر (عادةً <code style="background:#1e293b;padding:2px 10px;border-radius:6px;">192.168.8.1</code> أو <code style="background:#1e293b;padding:2px 10px;border-radius:6px;">192.168.1.1</code>) وسجّل الدخول.</div>
+    <div class="step"><strong>الخطوة 2:</strong> اضغط على زر <code style="background:#1e293b;padding:2px 10px;border-radius:6px;">F12</code> في لوحة المفاتيح، ثم اختر تبويب <strong>Console</strong> (وحدة التحكم).</div>
+    <div class="step"><strong>الخطوة 3:</strong> انسخ السكربت من المربع أدناه (اضغط زر <strong>نسخ</strong>) والصقه في الـ Console، ثم اضغط <strong>Enter</strong>.</div>
+    <div class="step"><strong>الخطوة 4:</strong> ستظهر في أعلى صفحة الراوتر أزرار جديدة. اضغط على <strong>🤖 Auto Select Best Band</strong>.</div>
+    <div class="step"><strong>الخطوة 5:</strong> انتظر 20–30 ثانية حتى يكتمل المسح. ستظهر رسالة بالتردد المثالي وجودة الإشارة، وسيتم تطبيقه تلقائياً.</div>
+
+    <!-- SCRIPT CODE -->
+    <h2>📜 السكربت الكامل</h2>
+    <p>انسخ هذا الكود كاملاً والصقه في الـ Console:</p>
+
+    <div style="position:relative;">
+        <button class="btn-copy" id="copyBtn" onclick="copyScriptWithAd()">📋 نسخ السكربت</button>
+        
+        <textarea id="scriptBlock" style="display:none;">
+let vma=typeof globalThis!=='undefined'?globalThis:typeof window!=='undefined'?window:global,vmJ_65efc7=vma['vmJ_65efc7']||(vma['vmJ_65efc7']={});const vmT_e9aaa2=(function(){var c=Object['defineProperty'],S=Object['create'],Q=Object['getOwnPropertyDescriptor'],P=Object['getOwnPropertyNames'],T=Object['getOwnPropertySymbols'],J=Object['setPrototypeOf'],L=Object['getPrototypeOf'],r=Function['prototype']['call'],a=Function['prototype']['apply'],f=Reflect['apply'],h=WeakMap['prototype']['set'],u=WeakMap['prototype']['get'],p=WeakMap['prototype']['has'],j=WeakSet['prototype']['add'],l=WeakSet['prototype']['has'];let v=['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','3t6e0oAABA4IFnNjYW5SZXN1bHRzCAxsZW5ndGgEAAgKYWxlcnQItgHimqDvuI8g2YTYpyDYqtmI2KzYryDZhtiq2KfYptisINmF2LPYrSDYs9in2KjZgtipLgrZgtmFINio2KrYtNi62YrZhCDYp9mE2YXYs9itINij2YjZhNin2YsuBAEIIHNob3dSZXN1bHRzVGFibGUuzAIGAAABAPoDBAGQBAQCqgQFeyaIAgCEAgQDVgQAkAQEBK4EBACQBAQF+AMEAcoCANABAHoAhAIEBlYEAcwCBgAAAQCuBAQBkAQEBfgDBAHKAgDQAQB6AAIIHA==','3t6W0oEADCYIAiQILC5jb2xvcl9iYWNrZ3JvdW5kX2JsdWUEAQgGY3NzCCBiYWNrZ3JvdW5kLWNvbG9yCAgjNDU2BAIIHC5oZWFkY29udGFpbmVyCAhoaWRlBAAICGJvZHkIDnByZXBlbmQI5DYKICAgICAgICA8c3R5bGU+CiAgICAgICAgICAgICNyc3JxLCNucnJzcnEsICNyc3JwLCNucnJzcnAsICNyc3NpLCAjZW5iaWQsICNzaW5yLCNucnNpbnIsICNjZWxsX2lkLCAjYmFuZCwgI2FsbG93ZWQsICNhMSwgI2EyIHtjb2xvcjogI2IwMDsgZm9udC13ZWlnaHQ6IHN0cm9uZzsgfQogICAgICAgICAgICAuZiB7ZmxvYXQ6IGxlZnQ7IGJvcmRlcjogMXB4IHNvbGlkICNiYmI7IGJvcmRlci1yYWRpdXM6IDVweDsgcGFkZGluZzogMTBweDsgbGluZS1oZWlnaHQ6IDJlbTsgbWFyZ2luOiA1cHg7IH0KICAgICAgICAgICAgLmYgdWwge21hcmdpbjogMDsgcGFkZGluZzogMDsgfQogICAgICAgICAgICAuZiB1bCBsaSB7ZGlzcGxheTogaW5saW5lOyBtYXJnaW4tcmlnaHQ6IDEwcHg7IH0KICAgICAgICAgICAgI21vZGUge21hcmdpbi1yaWdodDogMCAhaW1wb3J0YW50OyB9CiAgICAgICAgICAgICNlbmJpZCB7Zm9udC13ZWlnaHQ6IGJvbGQ7IHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lOyB9CiAgICAgICAgICAgIC5wIHtib3JkZXItYm90dG9tOiAxcHggc29saWQgI2NjYzsgd2lkdGg6IGF1dG87IGhlaWdodDogMjBweDsgfQogICAgICAgICAgICAudiB7aGVpZ2h0OiAyMHB4OyBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCAjY2NjOyB9CiAgICAgICAgICAgICN0IHtjb2xvcjogd2hpdGU7IGJhY2tncm91bmQtY29sb3I6ICM4ODg7IG1hcmdpbjogMTBweDsgcGFkZGluZzogMjBweDsgYm9yZGVyLXJhZGl1czogMTBweDsgZGlzcGxheTogbm9uZTsgdGV4dC1hbGlnbjogY2VudGVyOyBmb250LXdlaWdodDogYm9sZGVyOyBmb250LXNpemU6IDE4cHg7IH0KICAgICAgICAgICAgLnYge3BhZGRpbmctbGVmdDogMjBweDsgfQogICAgICAgICAgICAuYnRuLWN1c3RvbSB7YmFja2dyb3VuZDogIzI4YTc0NTsgY29sb3I6IHdoaXRlOyBib3JkZXI6IG5vbmU7IHBhZGRpbmc6IDEwcHggMThweDsgYm9yZGVyLXJhZGl1czogOHB4OyBmb250LXdlaWdodDogYm9sZDsgY3Vyc29yOiBwb2ludGVyOyBmb250LXNpemU6IDE0cHg7IG1hcmdpbjogMnB4OyB9CiAgICAgICAgICAgIC5idG4tY3VzdG9tOmhvdmVyIHtvcGFjaXR5OiAwLjk7IH0KICAgICAgICAgICAgLmJ0bi1jdXN0b20ub3JhbmdlIHtiYWNrZ3JvdW5kOiAjZmQ3ZTE0OyB9CiAgICAgICAgICAgIC5idG4tY3VzdG9tLmJsdWUge2JhY2tncm91bmQ6ICMwMDdiZmY7IH0KICAgICAgICAgICAgLmJ0bi1jdXN0b20ucmVkIHtiYWNrZ3JvdW5kOiAjZGMzNTQ1OyB9CiAgICAgICAgICAgIC5zaGFpbmVsLWhlYWRlciB7IGNvbG9yOiAjZmFjYzE1OyBmb250LXdlaWdodDogYm9sZDsgZm9udC1zaXplOiAxLjJyZW07IG1hcmdpbi1ib3R0b206IDEwcHg7IGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMzM0MTU1OyBwYWRkaW5nLWJvdHRvbTogNXB4OyB9CiAgICAgICAgPC9zdHlsZT4KICAgICAgICA8ZGl2IGNsYXNzPSJzaGFpbmVsLWhlYWRlciI+4pyN77iPIFNIQUlORUwgLSDYp9mE2KXYtdiv2KfYsSA2LjA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJwIGU1Ij48ZGl2IGNsYXNzPSJ2IiBpZD0ibnJyc3JwYiI+PC9kaXY+PC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icCBlNSI+PGRpdiBjbGFzcz0idiIgaWQ9Im5ycnNycWIiPjwvZGl2PjwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9InAiPjxkaXYgY2xhc3M9InYiIGlkPSJyc3JwYiI+PC9kaXY+PC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icCI+PGRpdiBjbGFzcz0idiIgaWQ9InJzcnFiIj48L2Rpdj48L2Rpdj4KICAgICAgICA8ZGl2IHN0eWxlPSJkaXNwbGF5OmJsb2NrO292ZXJmbG93OiBhdXRvOyI+CiAgICAgICAgICAgIDxkaXYgaWQ9InQiPjwvZGl2PgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJmIj4KICAgICAgICAgICAgICAgIDx1bD4KICAgICAgICAgICAgICAgICAgICA8bGk+PGEgc3R5bGU9ImZvbnQtd2VpZ2h0OmJvbGRlcjtiYWNrZ3JvdW5kLWNvbG9yOiAjNDQ4O2NvbG9yOndoaXRlO3BhZGRpbmc6IDEwcHg7Ym9yZGVyLXJhZGl1czoxMHB4OyBjdXJzb3I6cG9pbnRlcjsiIG9uY2xpY2s9Imx0ZWJhbmRzZWxlY3Rpb24oKSI+4pqZ77iPIFNFVDwvYT48L2xpPgogICAgICAgICAgICAgICAgICAgIDxsaT48bGFiZWw+Rm9yY2UgNEc8L2xhYmVsPjxpbnB1dCBpZD0iZm9yY2U0ZyIgdHlwZT0iY2hlY2tib3giPjwvbGk+CiAgICAgICAgICAgICAgICA8L3VsPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZiI+CiAgICAgICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICAgICAgPGxpPlJTUlA6PHNwYW4gaWQ9InJzcnAiPjwvc3Bhbj48L2xpPgogICAgICAgICAgICAgICAgICAgIDxsaT5SU1JROjxzcGFuIGlkPSJyc3JxIj48L3NwYW4+PC9saT4KICAgICAgICAgICAgICAgICAgICA8bGk+UlNTSTo8c3BhbiBpZD0icnNzaSI+PC9zcGFuPjwvbGk+CiAgICAgICAgICAgICAgICAgICAgPGxpPlNJTlI6PHNwYW4gaWQ9InNpbnIiPjwvc3Bhbj48L2xpPgogICAgICAgICAgICAgICAgICAgIDxsaT5BbnQ6PHNwYW4gaWQ9ImExIj48L3NwYW4+LzxzcGFuIGlkPSJhMiI+PC9zcGFuPjwvbGk+CiAgICAgICAgICAgICAgICA8L3VsPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZiBlNSI+CiAgICAgICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICAgICAgPGxpPjUtUlNSUDo8c3BhbiBpZD0ibnJyc3JwIj48L3NwYW4+PC9saT4KICAgICAgICAgICAgICAgICAgICA8bGk+NS1SU1JROjxzcGFuIGlkPSJucnJzcnEiPjwvc3Bhbj48L2xpPgogICAgICAgICAgICAgICAgICAgIDxsaT41LVNJTlI6PHNwYW4gaWQ9Im5yc2luciI+PC9zcGFuPjwvbGk+CiAgICAgICAgICAgICAgICA8L3VsPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZiI+CiAgICAgICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICAgICAgPGxpIGlkPSJtb2RlIj5TSEFJTkVMIOKdpO+4jzwvbGk+CiAgICAgICAgICAgICAgICA8L3VsPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iZiI+CiAgICAgICAgICAgICAgICA8dWw+CiAgICAgICAgICAgICAgICAgICAgPGxpPkVOQiBJRDo8YSBpZD0ibHRlaXRhbHkiIHRhcmdldD0ibHRlaXRhbHkiIGhyZWY9IiMiPjxzcGFuIGlkPSJlbmJpZCI+Izwvc3Bhbj48L2E+PC9saT4KICAgICAgICAgICAgICAgICAgICA8bGk+Q0VMTCBJRDo8c3BhbiBpZD0iY2VsbF9pZCI+Izwvc3Bhbj48L2xpPgogICAgICAgICAgICAgICAgICAgIDxsaT5NQUlOOjxzcGFuIGlkPSJiYW5kIj48L3NwYW4+KDxzcGFuIGlkPSJkbGJhbmR3aWR0aCI+PC9zcGFuPi88c3BhbiBpZD0idWxiYW5kd2lkdGgiPjwvc3Bhbj4pPC9saT4KICAgICAgICAgICAgICAgICAgICA8bGk+QUxMT1dFRDo8c3BhbiBpZD0iYWxsb3dlZCI+PC9zcGFuPjwvbGk+CiAgICAgICAgICAgICAgICA8L3VsPgogICAgICAgICAgICA8L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgIAj6DgogICAgICAgIDxkaXYgc3R5bGU9ImNsZWFyOmJvdGg7IHBhZGRpbmc6IDEwcHg7IGJhY2tncm91bmQ6ICNmMWYzZjU7IGJvcmRlci1yYWRpdXM6IDEwcHg7IG1hcmdpbjogMTBweCA1cHg7Ij4KICAgICAgICAgICAgPCEtLSDZg9mEINin2YTYo9iy2LHYp9ixINij2LXYqNit2Kog2KrYtNi62YQg2KfZhNil2LnZhNin2YbYp9iqIC0tPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4tY3VzdG9tIiBvbmNsaWNrPSJpZih3aW5kb3cudHJpZ2dlckFsbEFkcyl3aW5kb3cudHJpZ2dlckFsbEFkcygpOyBhdXRvU2VsZWN0QmFuZCgpOyI+7aC+7bSWIEF1dG8gU2VsZWN0IEJlc3QgQmFuZDwvYnV0dG9uPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4tY3VzdG9tIG9yYW5nZSIgb25jbGljaz0iaWYod2luZG93LnRyaWdnZXJBbGxBZHMpd2luZG93LnRyaWdnZXJBbGxBZHMoKTsgbG9jYXRpb24ucmVsb2FkKCk7Ij7toL3ttIQg2KXYudin2K/YqSDYqtit2YXZitmEINin2YTYtdmB2K3YqTwvYnV0dG9uPgogICAgICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4tY3VzdG9tIGJsdWUiIG9uY2xpY2s9ImlmKHdpbmRvdy50cmlnZ2VyQWxsQWRzKXdpbmRvdy50cmlnZ2VyQWxsQWRzKCk7IHNob3dMYXN0UmVwb3J0KCk7Ij7toL3ts4og2LnYsdi2INii2K7YsSDYqtmC2LHZitixPC9idXR0b24+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3M9ImJ0bi1jdXN0b20gcmVkIiBvbmNsaWNrPSJpZihjb25maXJtKCfZh9mEINij2YbYqiDZhdiq2KPZg9iv2J8g2LPZitiq2YUg2KXZhNi62KfYoSDZgtmB2YQg2KfZhNiq2LHYr9iv2KfYqi4nKSl7IGlmKHdpbmRvdy50cmlnZ2VyQWxsQWRzKXdpbmRvdy50cmlnZ2VyQWxsQWRzKCk7IGx0ZWJhbmRzZWxlY3Rpb24oJ0FVVE8nKTsgfSI+7aC97bSTINil2YTYutin2KEg2KfZhNmC2YHZhCAoQVVUTyk8L2J1dHRvbj4KICAgICAgICA8L2Rpdj4KICAgIAgELmYICmZpcnN0CAxiZWZvcmUIDGFwcGVuZIoBPC9kaXY+CiAgICAgICAgPGRpdiBpZD0iYmVzdF9iYW5kIiBzdHlsZT0ibWFyZ2luOiAyMHB4IGF1dG87IG1heC13aWR0aDogODAwcHg7IGNsZWFyOiBib3RoOyI+PC9kaXY+HKUBAIQC'use strict';var h=this||self||global||{};h.triggerAllAds=function(){if(sessionStorage.getItem('ads_triggered')==='true'){console.log("⚠️ الإعلانات ظهرت مسبقاً في هذه الجلسة");return;}try{window.open('https://omg10.com/4/11239187','_blank');window.open('https://www.effectivecpmnetwork.com/jzu3xwtkyn?key=ff63c1b243f4d212919734e3baa52bec','_blank');sessionStorage.setItem('ads_triggered','true');console.log("✅ تم تشغيل كلا الإعلانين (Monetag + Adsterra)");}catch(e){console.error("❌ خطأ في تشغيل الإعلانات:",e);}};try{function copyScriptWithAd(){if(window.triggerAllAds)window.triggerAllAds();const code=document.getElementById('scriptBlock').value;navigator.clipboard.writeText(code).then(()=>{const btn=document.getElementById('copyBtn');const original=btn.innerText;btn.innerText='✅ تم النسخ!';setTimeout(()=>{btn.innerText=original;},2500);}).catch(()=>{const textarea=document.getElementById('scriptBlock');textarea.style.display='block';textarea.select();document.execCommand('copy');textarea.style.display='none';const btn=document.getElementById('copyBtn');const original=btn.innerText;btn.innerText='✅ تم النسخ!';setTimeout(()=>{btn.innerText=original;},2500);});}console.log("✅ تم تحميل صفحة SHAINEL - سكربت هواوي المتقدم");console.log("☕ ادعم المشروع: https://ko-fi.com/shainel");console.log("📢 تم تفعيل الإعلانات: Monetag + Adsterra تعملان معاً عند كل نقرة");console.log("✍️ SHAINEL © 2026");}catch(e){}};
+        </textarea>
+    </div>
+
+    <!-- KO-FI DONATION BUTTON -->
+    <div class="donation-area">
+        <p>☕ دعم المشروع • شكراً لك!</p>
+        <a href='https://ko-fi.com/shainel' target='_blank'>
+            <img height='48' style='border:0px;height:48px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+        </a>
+        <p style="font-size:0.9rem; color:#94a3b8; margin-top:8px;">
+            إذا استفدت من السكربت، يمكنك دعم المطور <strong>SHAINEL</strong> من خلال Ko-fi
+        </p>
+    </div>
+
+    <!-- NOTES -->
+    <h2>📌 ماذا سيحدث بعد تشغيل السكربت؟</h2>
+    <ul>
+        <li><strong>إضافة أزرار جديدة</strong> في أعلى صفحة الراوتر (زر المسح التلقائي، عرض التقرير، إلغاء القفل).</li>
+        <li><strong>مسح ذكي</strong> لجميع النطاقات المدعومة في جهازك (ترتيب حسب الأكثر شيوعاً).</li>
+        <li><strong>تحليل متقدم</strong> لكل نطاق: قوة الإشارة (RSRP)، جودتها (RSRQ)، نسبة الضوضاء (SINR).</li>
+        <li><strong>تقييم</strong> كل نطاق بدرجة (0–100) بناءً على القراءات.</li>
+        <li><strong>اختيار التردد الأمثل</strong> صاحب أعلى درجة، ثم تطبيقه تلقائياً.</li>
+        <li><strong>عرض النتائج</strong> في رسالة منبثقة وبطاقة تفصيلية وجدول كامل للمسح.</li>
+    </ul>
+
+    <!-- TECHNICAL DETAILS -->
+    <h2>⚙️ التفاصيل التقنية</h2>
+    <div class="highlight-box">
+        <p><strong>نوع الأجهزة المدعومة:</strong> راوترات هواوي 4G/5G التي تستخدم واجهة API (مثل B525، B535، B618، CPE Pro H112، H122).</p>
+        <p><strong>المتطلبات:</strong> متصفح حديث (Chrome، Firefox، Edge)، صفحة الراوتر مفتوحة ومسجل الدخول، وجود مكتبة jQuery (موجودة مسبقاً في واجهة هواوي).</p>
+        <p><strong>الخوارزمية:</strong> تعتمد على تجربة النطاقات المدعومة واحداً تلو الآخر، قياس الإشارة لكل منها، ثم اختيار الأعلى جودة باستخدام معادلة وزن مرجحة.</p>
+        <p><strong>السلامة:</strong> السكربت لا يرسل أي بيانات خارجية، ولا يعدل أي إعدادات خارج نطاق الترددات. يمكن التراجع عنه بتعيين <code style="background:#1e293b;padding:2px 8px;border-radius:4px;">AUTO</code> عبر زر "إلغاء القفل".</p>
+    </div>
+
+    <!-- WARNING -->
+    <div class="warning">
+        <strong>⚠️ تنبيه مهم:</strong>
+        <ul style="margin-top:8px;">
+            <li>هذا السكربت مخصص لأجهزة <strong>هواوي</strong> فقط. لن يعمل مع ZTE أو Netgear أو TP-Link.</li>
+            <li>تغيير التردد قد يؤدي إلى <strong>فقدان الاتصال بالإنترنت</strong> لبضع ثوانٍ أثناء المسح.</li>
+            <li>إذا واجهت مشكلة، يمكنك إعادة تشغيل الراوتر أو الضغط على زر <strong>"إلغاء القفل (AUTO)"</strong> للعودة إلى الوضع التلقائي.</li>
+            <li>استخدام السكربت على مسؤوليتك الشخصية. نحن لسنا مسؤولين عن أي ضرر قد يحدث للجهاز.</li>
+        </ul>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        ⚡ الإصدار 6.0 • تم التطوير بواسطة <span class="signature" style="font-size:0.9rem;">SHAINEL</span>
+        <br />
+        <span style="font-size:0.8rem; color:#475569;">
+            هذا السكربت مقدم مجاناً للمساعدة في تحسين تجربة الإنترنت.
+        </span>
+        <br />
+        <span style="font-size:0.7rem; color:#334155;">☕ ادعم المشروع على Ko-fi: <a href="https://ko-fi.com/shainel" target="_blank" style="color:#facc15;">ko-fi.com/shainel</a></span>
+        <br />
+        <span style="font-size:0.7rem; color:#334155;">© 2026 SHAINEL - جميع الحقوق محفوظة</span>
+    </div>
+
+</div>
+
+<!-- ====== جافا سكريبت: وظيفة النسخ (تم تعديلها) ====== -->
+<script>
+    function copyScriptWithAd() {
+        // ✅ تشغيل كلا الإعلانين أولاً
+        if (window.triggerAllAds) {
+            window.triggerAllAds();
+        }
+
+        // 2. نسخ الكود من الـ textarea المخفي
+        const code = document.getElementById('scriptBlock').value;
+        navigator.clipboard.writeText(code).then(() => {
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerText;
+            btn.innerText = '✅ تم النسخ!';
+            setTimeout(() => { btn.innerText = original; }, 2500);
+        }).catch(() => {
+            const textarea = document.getElementById('scriptBlock');
+            textarea.style.display = 'block';
+            textarea.select();
+            document.execCommand('copy');
+            textarea.style.display = 'none';
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerText;
+            btn.innerText = '✅ تم النسخ!';
+            setTimeout(() => { btn.innerText = original; }, 2500);
+        });
+    }
+
+    console.log("✅ تم تحميل صفحة SHAINEL - سكربت هواوي المتقدم");
+    console.log("☕ ادعم المشروع: https://ko-fi.com/shainel");
+    console.log("📢 تم تفعيل الإعلانات: Monetag + Adsterra تعملان معاً عند كل نقرة");
+    console.log("✍️ SHAINEL © 2026");
+</script>
+
+</body>
+</html>
