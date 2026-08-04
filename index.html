@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سكربت هواوي - الإصدار 7.0 (Smart CA Profiles)</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="سكربت هواوي - الإصدار 7.0 (Smart CA Profiles)" />
+    <meta property="og:description" content="سكربت احترافي لراوترات هواوي، يقوم بمسح الترددات واختيار أفضل حزمة Carrier Aggregation (CA) تلقائياً بناءً على خوارزميات متقدمة." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://i.ibb.co/C526smmY/Jul-4-2026-07-48-37-PM-1.png" />
+    
+    <!-- jQuery (ضروري لعمل السكربت) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- أكواد الإعلانات (Monetag & Adsterra) -->
+    <script>
+        (function(s) { s.dataset.zone = '11239924'; s.src = 'https://al5sm.com/tag.min.js'; })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+    </script>
+    <script src="https://pl30206214.effectivecpmnetwork.com/d4/fc/e8/d4fce8059900325eea73d34a991c4011.js"></script>
+    <script>
+        window.triggerAllAds = function() {
+            if (sessionStorage.getItem('ads_triggered') === 'true') return;
+            try {
+                window.open('https://omg10.com/4/11239187', '_blank');
+                window.open('https://www.effectivecpmnetwork.com/jzu3xwtkyn?key=ff63c1b243f4d212919734e3baa52bec', '_blank');
+                sessionStorage.setItem('ads_triggered', 'true');
+            } catch (e) { console.error("❌ خطأ في تشغيل الإعلانات:", e); }
+        };
+    </script>
+
+    <!-- التصميم (CSS) -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0f172a; font-family: 'Segoe UI', Tahoma, sans-serif; color: #e2e8f0; line-height: 1.7; padding: 40px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; background: #1e293b; border-radius: 32px; padding: 50px 45px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8); border: 1px solid #334155; }
+        
+        /* Header & Branding */
+        .shainel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 15px; margin-bottom: 25px; }
+        .brand { color: #facc15; font-weight: bold; font-size: 1.4rem; }
+        .badge-version { background: #0ea5e9; color: #0f172a; font-weight: 700; padding: 4px 16px; border-radius: 50px; font-size: 0.9rem; }
+        
+        h1 { font-size: 2.8rem; font-weight: 700; background: linear-gradient(135deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-align: center; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: #94a3b8; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 25px; margin-bottom: 35px; }
+        
+        /* Sections */
+        h2 { font-size: 1.8rem; font-weight: 600; color: #f1f5f9; margin-top: 45px; margin-bottom: 20px; border-right: 6px solid #0ea5e9; padding-right: 18px; }
+        p, li { color: #cbd5e1; font-size: 1.05rem; }
+        ul, ol { padding-right: 25px; margin: 15px 0; }
+        li { margin-bottom: 10px; }
+        
+        /* Features Grid */
+        .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 30px 0; }
+        .feature-card { background: #0f172a; border-radius: 16px; padding: 20px; text-align: center; border: 1px solid #2d3a4f; transition: 0.3s; }
+        .feature-card:hover { border-color: #0ea5e9; transform: translateY(-5px); }
+        .feature-card .icon { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+        .feature-card .title { font-weight: 700; font-size: 1.1rem; color: #f1f5f9; }
+        .feature-card .desc { font-size: 0.95rem; color: #94a3b8; }
+
+        /* Steps */
+        .step { background: #0f172a; border-radius: 14px; padding: 20px 25px; margin: 16px 0; border-right: 5px solid #0ea5e9; }
+        .step strong { color: #facc15; }
+
+        /* Code Area */
+        .code-wrapper { background: #0f172a; border: 1px solid #2d3a4f; border-radius: 16px; padding: 20px; margin-top: 20px; position: relative; }
+        .code-wrapper button { margin-bottom: 10px; }
+
+        /* Buttons */
+        .btn-primary { background: #0ea5e9; color: #0f172a; border: none; font-weight: 700; padding: 12px 28px; border-radius: 60px; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .btn-primary:hover { background: #38bdf8; transform: scale(1.02); box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+
+        /* Warnings & Donation */
+        .donation-area { background: linear-gradient(135deg, #1e293b, #0f172a); border: 2px dashed #facc15; border-radius: 16px; padding: 25px; text-align: center; margin: 40px 0 20px; }
+        .donation-area a:hover { opacity: 0.8; transform: scale(1.02); display: inline-block; }
+        .warning-box { background: #451a1a; border: 1px solid #991b1b; border-radius: 14px; padding: 20px 25px; margin: 30px 0; }
+        .warning-box strong { color: #f87171; }
+
+        /* Footer */
+        .footer { text-align: center; margin-top: 45px; padding-top: 25px; border-top: 1px solid #334155; color: #64748b; font-size: 0.95rem; }
+        .footer .signature { background: linear-gradient(135deg, #facc15, #f59e0b); color: #0f172a; font-weight: 800; padding: 2px 14px; border-radius: 30px; }
+
+        @media (max-width: 640px) { .container { padding: 25px 15px; } h1 { font-size: 2rem; } .shainel-header { flex-direction: column; align-items: flex-start; gap: 10px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="shainel-header">
+            <div class="brand">✍️ SHAINEL</div>
+            <span class="badge-version">الإصدار 7.0 - Smart CA Profiles</span>
+        </div>
+
+        <h1>📡 سكربت اختيار الترددات المثلى</h1>
+        <div class="subtitle">
+            راوترات هواوي 4G / 5G • تحليل متقدم للإشارة • تجميع الموجات الحاملة (CA)
+        </div>
+
+        <!-- Intro -->
+        <p style="font-size: 1.15rem; margin-bottom: 25px;">
+            هذا السكربت يسمح لك باختيار <strong>أفضل حزمة ترددات (Carrier Aggregation)</strong> لراوتر هواوي الخاص بك تلقائياً. 
+            يقوم بمسح جميع الترددات المتاحة، قياس قوة الإشارة (RSRP)، جودتها (RSRQ)، ونسبة الإشارة للضوضاء (SINR)، 
+            ثم يختار أفضل حزمة ترددات متوافقة لتعزيز سرعة الإنترنت واستقراره.
+        </p>
+
+        <!-- Features -->
+        <div class="grid-features">
+            <div class="feature-card"><span class="icon">🔍</span><div class="title">مسح شامل</div><div class="desc">يفحص جميع الترددات المدعومة في جهازك</div></div>
+            <div class="feature-card"><span class="icon">📊</span><div class="title">تحليل دقيق</div><div class="desc">يحسب درجة الجودة لكل تردد بدقة</div></div>
+            <div class="feature-card"><span class="icon">🧩</span><div class="title">حزمة ذكية</div><div class="desc">يحدد أفضل حزمة ترددات لتجميع الموجات (1+3+20...)</div></div>
+            <div class="feature-card"><span class="icon">⚡</span><div class="title">تطبيق فوري</div><div class="desc">يطبق الحزمة المثالية على الراوتر بضغطة زر</div></div>
+        </div>
+
+        <!-- Detailed Steps -->
+        <h2>🚀 دليل الاستخدام الكامل</h2>
+        <div class="step"><strong>الخطوة 1:</strong> افتح صفحة إدارة الراوتر (عادةً <code>192.168.8.1</code> أو <code>192.168.1.1</code>) وقم بتسجيل الدخول.</div>
+        <div class="step"><strong>الخطوة 2:</strong> اضغط على زر <code>F12</code> في لوحة المفاتيح، ثم اختر تبويب <strong>Console</strong> (وحدة التحكم).</div>
+        <div class="step"><strong>الخطوة 3:</strong> انسخ السكربت من المربع أدناه والصقه داخل الـ Console، ثم اضغط <strong>Enter</strong>.</div>
+        <div class="step"><strong>الخطوة 4:</strong> ستظهر أزرار تحكم جديدة في أعلى صفحة الراوتر. اضغط على <strong>🤖 Auto Select Best CA Bands</strong>.</div>
+        <div class="step"><strong>الخطوة 5:</strong> انتظر <strong>من دقيقة إلى 3 دقائق</strong> (يعتمد الوقت على سرعة استجابة الراوتر وقوة التغطية). سيتم عرض أفضل حزمة ترددات في رسالة منبثقة، وسيتم تطبيقها تلقائياً.</div>
+
+        <!-- Code Section -->
+        <h2>📜 كود السكربت</h2>
+        <div class="code-wrapper">
+            <button class="btn-primary" id="copyBtn" onclick="copyScriptWithAd()">📋 نسخ السكربت</button>
+            
+            <!-- 👇 ضع الكود المشفر هنا 👇 -->
+            <textarea id="scriptBlock" style="display:none;">
+            </textarea>
+        </div>
+
+        <!-- Donation Area -->
+        <div class="donation-area">
+            <p>☕ دعم المشروع • شكراً لك!</p>
+            <a href='https://ko-fi.com/shainel' target='_blank'><img height='48' src='https://storage.ko-fi.com/cdn/kofi5.png?v=6' alt='Buy Me a Coffee at ko-fi.com' /></a>
+            <p style="font-size:0.95rem; color:#94a3b8; margin-top:12px;">إذا استفدت من هذا السكربت، يمكنك دعم المطور <strong>SHAINEL</strong> من خلال Ko-fi.</p>
+        </div>
+
+        <!-- Technical Details -->
+        <h2>⚙️ التفاصيل التقنية</h2>
+        <div class="highlight-box" style="background:#0f172a; border-radius:16px; padding:20px 24px; border:1px solid #334155;">
+            <p><strong>الأجهزة المدعومة:</strong> راوترات هواوي 4G/5G (مثل B525، B535، B618، CPE Pro H112، H122).</p>
+            <p><strong>المتطلبات:</strong> صفحة الراوتر مفتوحة ومسجل الدخول، وجود مكتبة jQuery (موجودة مسبقاً).</p>
+            <p><strong>الخوارزمية:</strong> يعتمد السكربت على أسلوب "تجربة النطاقات" لقياس الإشارة، ثم يتم اختيار الحزمة المثلى باستخدام ملفات تعريف Carrier Aggregation (CA Profiles) المدروسة لأجهزة هواوي.</p>
+            <p><strong>السلامة والأمان:</strong> السكربت لا يرسل أي بيانات خارجية، ولا يقوم بتعديل أي إعدادات باستثناء نطاق الترددات. يمكنك العودة للوضع التلقائي بضغطة زر "إلغاء القفل (AUTO)".</p>
+        </div>
+
+        <!-- Warning -->
+        <div class="warning-box">
+            <strong>⚠️ تنبيه مهم جداً:</strong>
+            <ul style="margin-top:8px;">
+                <li>هذا السكربت مخصص لأجهزة <strong>هواوي</strong> فقط. لن يعمل مع ZTE أو Netgear أو TP-Link.</li>
+                <li>تغيير التردد قد يؤدي إلى <strong>فقدان الاتصال بالإنترنت</strong> لبضع ثوانٍ أثناء المسح. هذا أمر طبيعي.</li>
+                <li>إذا واجهت أي مشكلة، يمكنك الضغط على زر <strong>"إلغاء القفل (AUTO)"</strong> لإعادة الراوتر إلى وضعه التلقائي الأصلي.</li>
+                <li>استخدام السكربت على مسؤوليتك الشخصية. نحن لسنا مسؤولين عن أي ضرر تقني للجهاز.</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            ⚡ الإصدار 7.0 (Smart CA Profiles) • تم التطوير بواسطة <span class="signature">SHAINEL</span>
+            <br /><span style="font-size:0.85rem; color:#475569;">هذا السكربت مقدم مجاناً للمساعدة في تحسين تجربة الإنترنت عبر هواوي.</span>
+            <br /><span style="font-size:0.8rem; color:#334155;">© 2026 SHAINEL - جميع الحقوق محفوظة</span>
+        </div>
+    </div>
+
+    <!-- JavaScript for Copy Function -->
+    <script>
+        function copyScriptWithAd() {
+            if (window.triggerAllAds) window.triggerAllAds();
+            const code = document.getElementById('scriptBlock').value;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const original = btn.innerText;
+                btn.innerText = '✅ تم النسخ!';
+                setTimeout(() => { btn.innerText = original; }, 2500);
+            }).catch(() => {
+                const textarea = document.getElementById('scriptBlock');
+                textarea.style.display = 'block';
+                textarea.select();
+                document.execCommand('copy');
+                textarea.style.display = 'none';
+                const btn = document.getElementById('copyBtn');
+                const original = btn.innerText;
+                btn.innerText = '✅ تم النسخ!';
+                setTimeout(() => { btn.innerText = original; }, 2500);
+            });
+        }
+        console.log("✅ SHAINEL - سكربت هواوي المتقدم 7.0 جاهز للعمل.");
+    </script>
+</body>
+</html>
